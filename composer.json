@@ -1,0 +1,25 @@
+{
+  "name": "humanmade/cms-installer",
+  "description": "CMS Installer plugin for Platform",
+  "type": "composer-plugin",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "Human Made",
+      "email": "hello@humanmade.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "johnpbloch/wordpress": "5.1.1",
+    "composer-plugin-api": "^1.1"
+  },
+  "extra": {
+    "class": "HM\\Platform\\CMS\\Composer\\Plugin"
+  },
+  "autoload": {
+    "classmap": [
+      "inc/"
+    ]
+  }
+}
