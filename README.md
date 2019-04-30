@@ -1,2 +1,3 @@
-# platform-cms-installer
-Composer plugin for installing the platform CMS
+# Platform CMS Installer
+
+Composer plugin for installing the platform CMS.
