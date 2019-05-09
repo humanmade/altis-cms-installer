@@ -15,7 +15,7 @@
     "composer-plugin-api": "^1.1"
   },
   "extra": {
-    "class": "HM\\Platform\\CMS\\Composer\\Plugin"
+    "class": "Altis\\CMS\\Composer\\Plugin"
   },
   "autoload": {
     "classmap": [

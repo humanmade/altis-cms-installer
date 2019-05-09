@@ -1,6 +1,6 @@
 <?php
 
-namespace HM\Platform\CMS\Composer;
+namespace Altis\CMS\Composer;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
