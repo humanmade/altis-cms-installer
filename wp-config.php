@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Main config file for loading Platform.
  *
@@ -60,6 +59,13 @@ foreach ( $required_constants as $constant ) {
 	if ( ! defined( $constant ) ) {
 		die( "$constant constant is not defined." );
 	}
+}
+
+/**
+ * Load custom config entry point.
+ */
+if ( file_exists( __DIR__ . '/.config/load.php' ) ) {
+	require_once __DIR__ . '/.config/load.php';
 }
 
 require_once ABSPATH . 'wp-settings.php';
