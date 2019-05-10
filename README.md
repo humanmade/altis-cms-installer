@@ -1,3 +1,3 @@
-# Platform CMS Installer
+# Altis CMS Installer
 
-Composer plugin for installing the platform CMS.
+Composer plugin for installing the Altis CMS module.
