@@ -43,7 +43,9 @@ if ( ! defined( 'WP_INSTALLING' ) || ! WP_INSTALLING ) {
 	}
 }
 
-$table_prefix = getenv( 'TABLE_PREFIX' ) ?: 'wp_';
+if ( ! isset( $table_prefix ) ) {
+	$table_prefix = 'wp_';
+}
 
 /*
  * DB constants are expected to be provided by other modules, as they are
