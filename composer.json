@@ -1,5 +1,5 @@
 {
-  "name": "humanmade/cms-installer",
+  "name": "altis/cms-installer",
   "description": "CMS Installer plugin for Altis",
   "type": "composer-plugin",
   "license": "GPL-2.0",
