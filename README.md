@@ -2,7 +2,7 @@
 
 <p align="center">Installation composer plugin for <strong><a href="https://altis-dxp.com/">Altis</a></strong>.</p>
 
-<p align="center"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/altis/cms-installer.svg"></p>
+<p align="center"><a href="https://packagist.org/packages/altis/cms-installer"><img alt="Packagist Version" src="https://img.shields.io/packagist/v/altis/cms-installer.svg"></a></p>
 
 
 ## Altis CMS Installer
