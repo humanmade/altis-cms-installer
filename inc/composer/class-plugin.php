@@ -48,7 +48,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 				'wordpress',
 				'index.php',
 				'wp-config.php',
-				'chassis*',
+				'chassis',
 				'vendor',
 			];
 			file_put_contents( $dest . '/.gitignore', implode( "\n", $entries ) );
