@@ -43,7 +43,15 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		// Update the .gitignore to include the wp-config.php, WordPress, the index.php
 		// as these files should not be included in VCS.
 		if ( ! file_exists( $dest . '/.gitignore' ) ) {
-			file_put_contents( $dest . '/.gitignore', "wordpress/\nindex.php\nwp-config.php" );
+			$entries = [
+				'# Altis',
+				'wordpress',
+				'index.php',
+				'wp-config.php',
+				'chassis',
+				'vendor',
+			];
+			file_put_contents( $dest . '/.gitignore', implode( "\n", $entries ) );
 		}
 
 		if ( ! is_dir( $dest . '/content' ) ) {
