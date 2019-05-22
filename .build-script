@@ -9,9 +9,5 @@ composer install --no-dev
 
 # Edit below this line to add any additional build steps.
 #
-# Available binaries:
-# - php
-# - composer
-# - node
-# - npm
-# - git
+# Learn more about build scripts in the Altis documentation:
+# https://www.altis-dxp.com/resources/docs/cloud/build-scripts/
