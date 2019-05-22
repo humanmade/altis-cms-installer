@@ -45,11 +45,11 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		if ( ! file_exists( $dest . '/.gitignore' ) ) {
 			$entries = [
 				'# Altis',
-				'wordpress',
-				'index.php',
-				'wp-config.php',
-				'chassis',
-				'vendor',
+				'/wordpress',
+				'/index.php',
+				'/wp-config.php',
+				'/chassis',
+				'/vendor',
 			];
 			file_put_contents( $dest . '/.gitignore', implode( "\n", $entries ) );
 		}
