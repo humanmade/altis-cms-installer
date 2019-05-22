@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#====================#
+# Altis Build Script #
+#====================#
+
+# Install composer dependencies
+composer install --no-dev
+
+# Edit below this line to add any additional build steps.
+#
+# Available binaries:
+# - php
+# - composer
+# - node
+# - npm
+# - git
