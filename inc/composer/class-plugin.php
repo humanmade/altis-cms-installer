@@ -40,6 +40,11 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		copy( $source . '/index.php', $dest . '/index.php' );
 		copy( $source . '/wp-config.php', $dest . '/wp-config.php' );
 
+		// Copy build script file if one doesn't exist.
+		if ( ! file_exists( $dest . '/.build-script' ) ) {
+			copy( $source . '/.build-script', $dest . '/.build-script' );
+		}
+
 		// Update the .gitignore to include the wp-config.php, WordPress, the index.php
 		// as these files should not be included in VCS.
 		if ( ! file_exists( $dest . '/.gitignore' ) ) {
