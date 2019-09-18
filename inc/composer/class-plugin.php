@@ -80,7 +80,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	public function generate_module_manifest() {
 		$repository = $this->composer->getRepositoryManager()->getLocalRepository();
 		$packages = $repository->getCanonicalPackages();
-		$vendor_dir = '.' . DIRECTORY_SEPARATOR . 'vendor';
+		$vendor_dir = $this->composer->getConfig()->get( 'vendor-dir' );
 		$package_list = array_reduce( $packages, function ( $carry, PackageInterface $package ) use ( $vendor_dir ) {
 			$extra = $package->getExtra();
 
