@@ -107,7 +107,24 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 			$module_loader .= "\n// Load {$package->getName()}.\nrequire_once __DIR__ . '{$file}';";
 		}
 
+		// Get custom module entrypoints.
+		$root_extra = $this->composer->getPackage()->getExtra();
+
+		if ( isset( $root_extra['altis']['modules'] ) ) {
+			foreach ( $root_extra['altis']['modules'] as $module => $config ) {
+				if ( ! isset( $config['entrypoint'] ) ) {
+					continue;
+				}
+
+				$files = array_filter( (array) $config['entrypoint'], 'file_exists' );
+				$files = implode( "';\nrequire_once __DIR__ . '/../", $files );
+
+				// Add the require line to the file.
+				$module_loader .= "\n// Load {$module}.\nrequire_once __DIR__ . '/../{$files}';";
+			}
+		}
+
 		// Write the loader file.
-		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', $package_list );
+		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', $module_loader );
 	}
 }
