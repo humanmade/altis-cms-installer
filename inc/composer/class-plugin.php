@@ -108,6 +108,6 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		}
 
 		// Write the loader file.
-		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', $package_list );
+		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', $module_loader );
 	}
 }
