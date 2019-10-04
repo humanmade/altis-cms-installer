@@ -117,14 +117,17 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 				}
 
 				$files = array_filter( (array) $config['entrypoint'], 'file_exists' );
-				$files = implode( "';\nrequire_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . '", $files );
+				$files = array_map( function ( $file ) {
+					return "require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . '{$file}';";
+				}, $files );
+				$files = implode( "\n", $files );
 
 				// Add the require line to the file.
-				$module_loader .= "\n// Load {$module}.\nrequire_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . '{$files}';";
+				$module_loader .= "\n// Load {$module}.\n{$files}";
 			}
 		}
 
 		// Write the loader file.
-		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', $module_loader );
+		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', "{$module_loader}\n" );
 	}
 }
