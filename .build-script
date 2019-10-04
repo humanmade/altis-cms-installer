@@ -5,7 +5,7 @@
 #====================#
 
 # Install composer dependencies
-composer install --no-dev
+composer install --no-dev --optimize-autoloader
 
 # Edit below this line to add any additional build steps.
 #
