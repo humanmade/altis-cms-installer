@@ -66,6 +66,6 @@ foreach ( $required_constants as $constant ) {
 	}
 }
 
-if ( ! defined( 'PHPUNIT_COMPOSER_INSTALL' ) ) {
+if ( ! getenv( 'WP_PHPUNIT__TESTS_CONFIG' ) ) {
 	require_once ABSPATH . 'wp-settings.php';
 }
