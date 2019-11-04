@@ -66,4 +66,6 @@ foreach ( $required_constants as $constant ) {
 	}
 }
 
-require_once ABSPATH . 'wp-settings.php';
+if ( ! getenv( 'WP_PHPUNIT__TESTS_CONFIG' ) ) {
+	require_once ABSPATH . 'wp-settings.php';
+}
