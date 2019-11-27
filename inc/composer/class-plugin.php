@@ -37,7 +37,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	 * Install additional files to the project on update / install
 	 */
 	public function install_files() {
-		$source = dirname( __DIR__, 2 );
+		$source = $this->composer->getConfig()->get( 'vendor-dir' ) . '/altis/cms';
 		$dest   = dirname( $this->composer->getConfig()->get( 'vendor-dir' ) );
 
 		copy( $source . '/index.php', $dest . '/index.php' );
