@@ -104,7 +104,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 			$file = str_replace( $vendor_dir, '', $file );
 
 			// Add the require line to the file.
-			$module_loader .= "\n// Load {$package->getName()}.\nrequire_once __DIR__ . '{$file}';";
+			// ~~DIR~~ is used because composer plugin files are eval'd during an
+			// install action and directory and file path constants get replaced.
+			$module_loader .= "\n// Load {$package->getName()}.\nrequire_once ~~DIR~~ . '{$file}';";
 		}
 
 		// Get custom module entrypoints.
@@ -118,7 +120,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 
 				$files = array_filter( (array) $config['entrypoint'], 'file_exists' );
 				$files = array_map( function ( $file ) {
-					return "require_once dirname( __DIR__ ) . DIRECTORY_SEPARATOR . '{$file}';";
+					return "require_once dirname( ~~DIR~~ ) . DIRECTORY_SEPARATOR . '{$file}';";
 				}, $files );
 				$files = implode( "\n", $files );
 
@@ -126,6 +128,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 				$module_loader .= "\n// Load {$module}.\n{$files}";
 			}
 		}
+
+		// Replace ~~DIR~~ with __DIR__.
+		$module_loader = str_replace( '~~', '__', $module_loader );
 
 		// Write the loader file.
 		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', "{$module_loader}\n" );
