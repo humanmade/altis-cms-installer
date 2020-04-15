@@ -92,9 +92,12 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 			}
 
 			// Determine absolute file path.
-			$default_base = $vendor_dir . DIRECTORY_SEPARATOR . str_replace( '/', DIRECTORY_SEPARATOR, $package->getName() );
+			// Note: we use / instead of the platform-dependent directory
+			// separator as it needs to work cross-platform (e.g. Windows host,
+			// Linux VM)
+			$default_base = $vendor_dir . '/' . str_replace( DIRECTORY_SEPARATOR, '/', $package->getName() );
 			$base = $package->getTargetDir() ?? $default_base;
-			$file = $base . DIRECTORY_SEPARATOR . 'load.php';
+			$file = $base . '/' . 'load.php';
 
 			if ( ! file_exists( $file ) ) {
 				continue;
