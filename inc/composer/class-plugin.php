@@ -138,4 +138,16 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		// Write the loader file.
 		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', "{$module_loader}\n" );
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function deactivate( Composer $composer, IOInterface $io ) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function uninstall( Composer $composer, IOInterface $io ) {
+	}
 }
