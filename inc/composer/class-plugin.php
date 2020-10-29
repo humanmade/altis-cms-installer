@@ -5,7 +5,6 @@ namespace Altis\CMS\Composer;
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
-use Composer\Package\PackageInterface;
 use Composer\Plugin\PluginInterface;
 
 class Plugin implements PluginInterface, EventSubscriberInterface {
@@ -60,6 +59,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 				'/vendor',
 				'/content/uploads',
 			];
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
 			file_put_contents( $dest . '/.gitignore', implode( "\n", $entries ) );
 		}
 
@@ -136,6 +136,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		$module_loader = str_replace( '~~', '__', $module_loader );
 
 		// Write the loader file.
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
 		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', "{$module_loader}\n" );
 	}
 }
