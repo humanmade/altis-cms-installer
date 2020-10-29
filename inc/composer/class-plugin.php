@@ -139,4 +139,16 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
 		file_put_contents( $vendor_dir . DIRECTORY_SEPARATOR . 'modules.php', "{$module_loader}\n" );
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function deactivate( Composer $composer, IOInterface $io ) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function uninstall( Composer $composer, IOInterface $io ) {
+	}
 }
