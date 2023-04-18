@@ -10,6 +10,13 @@ use Composer\Plugin\PluginInterface;
 class Plugin implements PluginInterface, EventSubscriberInterface {
 
 	/**
+	 * The composer instance.
+	 *
+	 * @var Composer
+	 */
+	protected $composer;
+
+	/**
 	 * Activate is not used, but is part of the abstract class.
 	 *
 	 * @param Composer $composer
