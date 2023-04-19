@@ -1,4 +1,9 @@
 <?php
+/**
+ * Altis CMS Installer.
+ *
+ * @package altis/cms-installer
+ */
 
 namespace Altis\CMS\Composer;
 
@@ -7,6 +12,9 @@ use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
+/**
+ * Altis CMS Installer plugin class.
+ */
 class Plugin implements PluginInterface, EventSubscriberInterface {
 
 	/**
@@ -19,8 +27,8 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	/**
 	 * Activate is not used, but is part of the abstract class.
 	 *
-	 * @param Composer $composer
-	 * @param IOInterface $io
+	 * @param Composer $composer The composer instance.
+	 * @param IOInterface $io The IO instance.
 	 */
 	public function activate( Composer $composer, IOInterface $io ) {
 		$this->composer = $composer;
@@ -101,7 +109,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 			// Determine absolute file path.
 			// Note: we use / instead of the platform-dependent directory
 			// separator as it needs to work cross-platform (e.g. Windows host,
-			// Linux VM)
+			// Linux VM).
 			$default_base = $vendor_dir . '/' . str_replace( DIRECTORY_SEPARATOR, '/', $package->getName() );
 			$base = $package->getTargetDir() ?? $default_base;
 			$file = $base . '/' . 'load.php';
@@ -148,13 +156,19 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Deactivate is not used, but is part of the abstract class.
+	 *
+	 * @param Composer $composer The composer instance.
+	 * @param IOInterface $io The IO instance.
 	 */
 	public function deactivate( Composer $composer, IOInterface $io ) {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Uninstall is not used, but is part of the abstract class.
+	 *
+	 * @param Composer $composer The composer instance.
+	 * @param IOInterface $io The IO instance.
 	 */
 	public function uninstall( Composer $composer, IOInterface $io ) {
 	}
