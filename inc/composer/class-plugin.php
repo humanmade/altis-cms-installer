@@ -54,11 +54,13 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		$source = $this->composer->getConfig()->get( 'vendor-dir' ) . '/altis/cms';
 		$dest   = dirname( $this->composer->getConfig()->get( 'vendor-dir' ) );
 
-		// Ensure altis/cms is installed.
+		// Bail if altis/cms isn't installed, unpredictable environment.
 		if ( file_exists( $source . '/index.php' ) ) {
-			copy( $source . '/index.php', $dest . '/index.php' );
-			copy( $source . '/wp-config.php', $dest . '/wp-config.php' );
+			return;
 		}
+
+		copy( $source . '/index.php', $dest . '/index.php' );
+		copy( $source . '/wp-config.php', $dest . '/wp-config.php' );
 
 		// Copy build script file if one doesn't exist.
 		if ( ! file_exists( $dest . '/.build-script' ) ) {
