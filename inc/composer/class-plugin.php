@@ -55,7 +55,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		$dest   = dirname( $this->composer->getConfig()->get( 'vendor-dir' ) );
 
 		// Bail if altis/cms isn't installed, unpredictable environment.
-		if ( file_exists( $source . '/index.php' ) ) {
+		if ( ! file_exists( $source . '/index.php' ) ) {
 			return;
 		}
 
